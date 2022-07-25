@@ -6,8 +6,9 @@ Feature: Test Login Functionality
     And user clicks on sign in
     When user enters <username> and <password>
     And user clicks on login
-    Then user is navigated to the home page
+    And user is navigated to the home page
+    Then user closes the browser
 
     Examples:
       | username             | password        |
-
+      | Jamie@cloudthing.com | Password123456! |

@@ -8,8 +8,9 @@ Feature: Test Accessibility Page
     And user clicks on login
     And user is navigated to the home page
     And user clicks on Accessibility Button
-    Then Accessibility page is displayed
+    And Accessibility page is displayed
+    Then user closes the browser
 
     Examples:
       | username             | password        |
-
+      | Jamie@cloudthing.com | Password123456! |
