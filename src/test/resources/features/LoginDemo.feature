@@ -11,4 +11,4 @@ Feature: Test Login Functionality
 
     Examples:
       | username             | password        |
-      | Jamie@cloudthing.com | Password123456! |
+

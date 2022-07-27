@@ -48,6 +48,8 @@ public class LoginDemoSteps_PF {
     public void user_clicks_on_sign_in() throws InterruptedException {
 
         home = new HomePage_PF(driver);
+        home.clickCookieButton();
+        home.clickSkipButton();
         home.clickSignin();
         //driver.findElement(By.cssSelector("#main-content > div.govuk-width-container.app-width-container > div > div > div > div > div > div > div > a")).click();
         Thread.sleep(2000);
@@ -78,8 +80,8 @@ public class LoginDemoSteps_PF {
     @Then("user is navigated to the home page")
     public void user_is_navigated_to_the_home_page() throws InterruptedException {
 
-        login.clickCookie();
-        login.clickSkip();
+//        login.clickCookie();
+//        login.clickSkip();
         login.checkLogOutisDisplayed();
         //driver.findElement(By.cssSelector("body > header > div > div.govuk-header__content > a.sign-out-link.govuk-header__link")).isDisplayed();
 
