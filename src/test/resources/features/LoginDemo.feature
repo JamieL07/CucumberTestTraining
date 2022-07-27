@@ -1,5 +1,6 @@
 Feature: Test Login Functionality
 
+  @smoketest
   Scenario Outline: Check login in successful with valid credentials
     Given browser is open
     And user is on login page
@@ -11,4 +12,5 @@ Feature: Test Login Functionality
 
     Examples:
       | username             | password        |
+
 
