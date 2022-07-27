@@ -13,4 +13,4 @@ Feature: Test Accessibility Page
 
     Examples:
       | username             | password        |
-      | Jamie@cloudthing.com | Password123456! |
+
