@@ -1,5 +1,7 @@
 package StepDefinitions;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -20,9 +22,9 @@ public class LoginDemoSteps_PF {
 
     final By Signin = By.cssSelector("#main-content > div.govuk-width-container.app-width-container > div > div > div > div > div > div > div > a");
 
-    @Given("browser is open")
-    public void browser_is_open() {
-        System.out.println("Inside Step - browser is open");
+    @Before
+    public void browserSetup() throws InterruptedException {
+        System.out.println("Inside Step - browserSetup");
 
         String projectPath = System.getProperty("user.dir");
         System.out.println("Project path is :" + projectPath);
@@ -33,27 +35,55 @@ public class LoginDemoSteps_PF {
 
         driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
-
-    }
-
-    @And("user is on login page")
-    public void user_is_on_login_page() {
-
-        driver.navigate().to("https://myvttest.powerappsportals.com/");
         driver.manage().window().maximize();
-
-    }
-
-    @And("user clicks on sign in")
-    public void user_clicks_on_sign_in() throws InterruptedException {
-
+        driver.navigate().to("https://myvttest.powerappsportals.com/");
         home = new HomePage_PF(driver);
         home.clickCookieButton();
         home.clickSkipButton();
         home.clickSignin();
         //driver.findElement(By.cssSelector("#main-content > div.govuk-width-container.app-width-container > div > div > div > div > div > div > div > a")).click();
         Thread.sleep(2000);
+
     }
+
+    @After
+    public void teardown() {
+        driver.close();
+        driver.quit();
+    }
+
+
+//   @Given("browser is open")
+//    public void browser_is_open() {
+//        System.out.println("Inside Step - browser is open");
+//
+//        String projectPath = System.getProperty("user.dir");
+//        System.out.println("Project path is :" + projectPath);
+//
+//        System.setProperty("webdriver.chrome.driver", projectPath + "/src/test/resources/drivers/chromedriver.exe");
+//
+//        driver = new ChromeDriver();
+//
+//        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+//        driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+
+
+//    @And("user is on login page")
+//    public void user_is_on_login_page() {
+//
+//        driver.navigate().to("https://myvttest.powerappsportals.com/");
+//    }
+
+//    @And("user clicks on sign in")
+//    public void user_clicks_on_sign_in() throws InterruptedException {
+//
+//        home = new HomePage_PF(driver);
+//        home.clickCookieButton();
+//        home.clickSkipButton();
+//        home.clickSignin();
+//        //driver.findElement(By.cssSelector("#main-content > div.govuk-width-container.app-width-container > div > div > div > div > div > div > div > a")).click();
+//        Thread.sleep(2000);
+//    }
 
     @When("^user enters (.*) and (.*)$")
     public void user_enters_username_and_password(String username, String password) {
@@ -103,8 +133,8 @@ public class LoginDemoSteps_PF {
 
     }
 
-    @Then("user closes the browser")
+ /*   @Then("user closes the browser")
     public void user_closes_the_browser() {
         driver.close();
-    }
+    }*/
 }
