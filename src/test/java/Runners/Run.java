@@ -10,7 +10,7 @@ import io.cucumber.testng.CucumberOptions;
         plugin = {"pretty", "html:target/cucumber-report.html",
                 "json:target/JSONReport/report.json",
                 "junit:target/JunitReport/report.xml"},
-        tags = "@smoketest"
+        tags = "@smoketest or @Regression"
 
 )
 public class Run extends AbstractTestNGCucumberTests {
